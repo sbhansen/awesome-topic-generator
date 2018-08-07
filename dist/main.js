@@ -338,6 +338,42 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./src/api/ImageApi.tsx":
+/*!******************************!*\
+  !*** ./src/api/ImageApi.tsx ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ImageApi = /** @class */ (function () {\n    function ImageApi() {\n        this.apiConfig = {\n            root: \"https://api.gettyimages.com/v3/search/images\"\n        };\n    }\n    ImageApi.prototype.getImage = function () {\n        fetch(this.apiConfig.root + \"?fields=id,title,thumb,referral_destinations&sort_order=best&phrase=lecture\")\n            .then(function (response) {\n            if (response.ok) {\n                var data = response.json();\n                return \"jolo\";\n            }\n            else {\n                console.log(response.status);\n                console.log(response.statusText);\n                return false;\n            }\n        })\n            .catch(function () {\n            return false;\n        });\n    };\n    return ImageApi;\n}());\nexports.default = ImageApi;\n\n\n//# sourceURL=webpack:///./src/api/ImageApi.tsx?");
+
+/***/ }),
+
+/***/ "./src/api/TopicApi.tsx":
+/*!******************************!*\
+  !*** ./src/api/TopicApi.tsx ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar TopicApi = /** @class */ (function () {\n    function TopicApi() {\n        var _this = this;\n        this.getItem = function (key) {\n            var pool = _this.pool[key];\n            var range = pool.length;\n            var index = Math.floor(Math.random() * range);\n            return pool[index];\n        };\n        this.pool = {\n            intent: [\n                \"How to fully emerge in\",\n                \"Developing\",\n                \"Programing\",\n                \"Researching better\",\n                \"Constructing\"\n            ],\n            subject: [\n                \"artificial gravity wells\",\n                \"complex algorithms\",\n                \"solar moon orbit\",\n                \"critical architecture\"\n            ],\n            purpose: [\n                \"to understand\",\n                \"for better implementation of\",\n                \"to increase knowledge of\",\n                \"for better on-boarding of\"\n            ],\n            implementation: [\n                \"by focusing on\",\n                \"through increased effort off\",\n                \"by enabling\"\n            ],\n            area: [\n                \"the competitive market\",\n                \"deep sea drilling\",\n                \"the academic circle\",\n                \"global trading\"\n            ],\n            modulator: [\n                \"producing\",\n                \"strengthening\",\n                \"increasing\",\n                \"working\"\n            ],\n            pronoun: [\n                \"over\",\n                \"on\",\n                \"for\",\n                \"in\",\n                \"across\",\n                \"under\",\n                \"into\"\n            ]\n        };\n    }\n    TopicApi.prototype.getTopic = function () {\n        var _this = this;\n        var structure = [\n            \"intent\",\n            \"subject\",\n            \"purpose\",\n            \"subject\",\n            \"implementation\",\n            \"subject\",\n            \"pronoun\",\n            \"area\"\n        ];\n        var sentenceArray = [];\n        structure.forEach(function (key) {\n            var string = _this.getItem(key);\n            while (sentenceArray.indexOf(string) > 0) {\n                string = _this.getItem(key);\n            }\n            sentenceArray.push(string);\n        });\n        return sentenceArray.join(\" \");\n    };\n    return TopicApi;\n}());\nexports.default = TopicApi;\n\n\n//# sourceURL=webpack:///./src/api/TopicApi.tsx?");
+
+/***/ }),
+
+/***/ "./src/component/Hero.tsx":
+/*!********************************!*\
+  !*** ./src/component/Hero.tsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = Object.setPrototypeOf ||\n        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar Hero = /** @class */ (function (_super) {\n    __extends(Hero, _super);\n    function Hero() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    Hero.prototype.render = function () {\n        return (React.createElement(\"article\", { className: \"hero\", style: { backgroundImage: \"url( \" + this.props.imageUrl + \")\" } }, this.props.children));\n    };\n    return Hero;\n}(React.Component));\nexports.default = Hero;\n\n\n//# sourceURL=webpack:///./src/component/Hero.tsx?");
+
+/***/ }),
+
 /***/ "./src/container/App.tsx":
 /*!*******************************!*\
   !*** ./src/container/App.tsx ***!
@@ -346,7 +382,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = Object.setPrototypeOf ||\n        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar App = /** @class */ (function (_super) {\n    __extends(App, _super);\n    function App() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    App.prototype.render = function () {\n        return React.createElement(\"h1\", null, \"Hello world\");\n    };\n    return App;\n}(React.Component));\nexports.default = App;\n\n\n//# sourceURL=webpack:///./src/container/App.tsx?");
+eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = Object.setPrototypeOf ||\n        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar TopicApi_1 = __webpack_require__(/*! ../api/TopicApi */ \"./src/api/TopicApi.tsx\");\nvar ImageApi_1 = __webpack_require__(/*! ../api/ImageApi */ \"./src/api/ImageApi.tsx\");\nvar Hero_1 = __webpack_require__(/*! ../component/Hero */ \"./src/component/Hero.tsx\");\nvar App = /** @class */ (function (_super) {\n    __extends(App, _super);\n    function App(props) {\n        var _this = _super.call(this, props) || this;\n        _this.ImageApi = new ImageApi_1.default();\n        _this.TopicApi = new TopicApi_1.default();\n        _this.state = {\n            topic: _this.getTopic(),\n            coverUrl: _this.getCoverUrl()\n        };\n        return _this;\n    }\n    App.prototype.getTopic = function () {\n        var topic = this.TopicApi.getTopic();\n        return topic;\n    };\n    App.prototype.setTopic = function () {\n        var topic = this.getTopic();\n        this.setState({ topic: topic });\n    };\n    App.prototype.getCoverUrl = function () {\n        var coverUrl = this.ImageApi.getImage();\n        return \"foo\";\n    };\n    App.prototype.setCover = function () {\n        var coverUrl = this.getCoverUrl();\n        this.setState({ coverUrl: coverUrl });\n    };\n    App.prototype.render = function () {\n        return (React.createElement(Hero_1.default, { imageUrl: this.state.coverUrl },\n            React.createElement(\"h2\", null,\n                \"Creating a high quality topic title is hard.\",\n                React.createElement(\"br\", null),\n                \"Let robots deal with that mess.\"),\n            React.createElement(\"h1\", null, this.state.topic),\n            React.createElement(\"button\", { onClick: this.setTopic.bind(this) }, \"Make me another instantly famous speech title\"),\n            React.createElement(\"p\", null, \"Our conversational predictive AI sources thousands of research articles and creates the perfect title, making your talk stand out between millions of presumptuous meetup talks.\")));\n    };\n    return App;\n}(React.Component));\nexports.default = App;\n\n\n//# sourceURL=webpack:///./src/container/App.tsx?");
 
 /***/ }),
 

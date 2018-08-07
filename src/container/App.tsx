@@ -2,6 +2,8 @@ import * as React from "react"
 import _TopicApi from '../api/TopicApi'
 import _ImageApi from '../api/ImageApi'
 
+import Hero from "../component/Hero";
+
 export default class App extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -37,7 +39,7 @@ export default class App extends React.Component<any, any> {
 
     public render() {
         return (
-            <article>
+            <Hero imageUrl={this.state.coverUrl}>
                 <h2>
                     Creating a high quality topic title is hard.<br />
                     Let robots deal with that mess.
@@ -48,7 +50,12 @@ export default class App extends React.Component<any, any> {
                 <button onClick={this.setTopic.bind(this)}>
                     Make me another instantly famous speech title
                 </button>
-            </article>
+                <p>
+                    Our conversational predictive AI sources thousands of research
+                    articles and creates the perfect title, making your talk stand
+                    out between millions of presumptuous meetup talks.
+                </p>
+            </Hero>
         )
     }
 }

@@ -1,12 +1,16 @@
-import * as React from "react";
+import * as React from "react"
+import "./Hero.scss"
 
 export interface HeroProps {
-    title: string;
-    imageUrl: string;
+    imageUrl: string
 }
 
-export class Hero extends React.Component<HeroProps, {}> {
+export default class Hero extends React.Component<HeroProps> {
     render(){
-        return <h1>{this.props.title}</h1>
+        return (
+            <article className="hero" style={{ backgroundImage : `url( ${this.props.imageUrl })` }} >
+                {this.props.children}
+            </article>
+        )
     }
 }
