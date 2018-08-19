@@ -1,27 +1,45 @@
 interface apiConfig {
-    [key: string]: apiConfig[keyof apiConfig],
+    [key: string]: apiConfig[keyof apiConfig]
     root: string
+    key: string
 }
 
 export default class ImageApi {
-    private apiConfig: apiConfig = {
-        root: "https://api.gettyimages.com/v3/search/images"
+
+    constructor(config: apiConfig) {
+        this.apiConfig = config
     }
-    public getImage(): any {
-        fetch(this.apiConfig.root + "?fields=id,title,thumb,referral_destinations&sort_order=best&phrase=lecture")
-        .then(response => {
-            if( response.ok ){
-                let data:any = response.json();
-                return "jolo";
-            }
-            else {
-                console.log(response.status)
-                console.log(response.statusText)
-                return false
-            }
-        })
-        .catch(()=>{
-            return false
+
+    private apiConfig: apiConfig
+
+    private getEndpointUrl(endpoint: string): string {
+        const delimiter:string = endpoint.indexOf("?") > -1 ? "&" : "?"
+        return this.apiConfig.root + endpoint + delimiter + "client_id=" + this.apiConfig.key
+    }
+
+    private getImageUrlFromResult(result: any): string {
+        return result.urls.regular
+    }
+
+    public getImage( query:string = "" ): any {
+        return new Promise((resolve: any, reject: any) => {
+            let endpoint:string = `query=${query}&per_page=1&page=1`
+            fetch(this.getEndpointUrl("random"))
+                .then(result => {
+                    if (result.ok) {
+                        let data: any = result.json();
+                        return data;
+                    }
+                    else {
+                        reject( "ERROR: API replied, but not ok response." )
+                    }
+                })
+                .then(data => {
+                    resolve( this.getImageUrlFromResult(data) )
+                })
+                .catch((error) => {
+                    reject( "ERROR: Could not fetch data from API" )
+                })
         })
     }
 }

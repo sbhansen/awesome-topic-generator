@@ -1,4 +1,3 @@
-
 interface topicPool {
     [key: string]: topicPool[keyof topicPool],
     intent: string[],

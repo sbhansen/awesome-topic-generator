@@ -3,4 +3,8 @@ import * as ReactDOM from 'react-dom';
 
 import App from './container/App';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+declare global {
+    interface Window { config: any; }
+}
+
+ReactDOM.render(<App config={window.config} />, document.getElementById('app'))
