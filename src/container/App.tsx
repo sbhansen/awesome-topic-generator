@@ -1,21 +1,23 @@
+import "./App.scss"
+import "../type/@config"
+
 import * as React from "react"
 import _TopicApi from '../api/TopicApi'
 import _ImageApi from '../api/ImageApi'
 
 import Hero from "../component/Hero";
 
-import "./App.scss"
 
 interface AppProps {
-    [key:string]: AppProps[keyof AppProps]
-    config:any
+    [key: string]: AppProps[keyof AppProps]
+    config: Config
 }
 
 interface AppState {
-    [key:string]: AppState[keyof AppState]
+    [key: string]: AppState[keyof AppState]
     topic: string
     coverUrl: string
-    loading:boolean
+    loading: boolean
 }
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -29,7 +31,7 @@ export default class App extends React.Component<AppProps, AppState> {
         }
     }
 
-    private ImageApi = new _ImageApi(this.props.config.api)
+    private ImageApi: any = new _ImageApi(this.props.config.api)
     private TopicApi: any = new _TopicApi()
 
     private setNewTopic(): void {
@@ -46,28 +48,13 @@ export default class App extends React.Component<AppProps, AppState> {
         })
     }
 
-    public componentWillMount(){
+    public componentWillMount() {
         //this.setNewTopic()
     }
 
     public render() {
         return (
-            <Hero imageUrl={this.state.coverUrl}>
-                <h2>
-                    Creating a high quality topic title is hard.<br />
-                    Let robots deal with that mess.
-                </h2>
-                <h1>
-                    {this.state.topic}
-                </h1>
-                <button onClick={this.setNewTopic.bind(this)}>
-                    Make me another instantly famous speech title
-                </button>
-                <p>
-                    Our conversational predictive AI sources thousands of research
-                    articles and creates the perfect title, making your talk stand
-                    out between millions of presumptuous meetup talks.
-                </p>
+            <Hero imageUrl={this.state.coverUrl} setNewTopic={this.setNewTopic.bind(this)} topic={this.state.topic}>
             </Hero>
         )
     }
