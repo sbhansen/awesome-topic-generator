@@ -1,5 +1,5 @@
-# Passphrases are better than Pass Words
-An app to generate pass phrases from a salt.
+# Awesome Topic Generator
+An app that generates topics for interesting presentations.
 
 ## Technology
 1. React 16
